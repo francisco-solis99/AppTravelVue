@@ -2,19 +2,17 @@
 </script>
 
 <template>
-  <router-link to="/">Home</router-link> |
-  <router-link to="/about">About</router-link> |
-  <router-view></router-view>
+  <header>
+    <nav id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/brazil">Brazil</router-link>
+      <router-link to="/hawaii">Hawaii</router-link>
+      <router-link to="/jamaica">Jamaica</router-link>
+      <router-link to="/panama">Panama</router-link>
+    </nav>
+  </header>
+
+  <main class="container">
+    <router-view></router-view>
+  </main>
 </template>
-
-<style>
-@import './assets/base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
-}
-</style>
