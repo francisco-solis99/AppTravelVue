@@ -20,6 +20,7 @@
 
 
 <template>
+<!-- Make the template for every destination according to the destination  id in the url -->
   <section class="destination">
     <h1>{{destination.name}}</h1>
     <div class="destination-details">

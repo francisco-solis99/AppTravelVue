@@ -13,6 +13,7 @@
   <div class="home">
     <h1>All destinations</h1>
     <div class="destinations">
+      <!-- router link to show every single destination with a title and a image -->
       <router-link
       v-for="destination in destinations"
       :key="destination.id"
