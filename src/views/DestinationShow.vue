@@ -5,8 +5,8 @@
   export default{
     name: 'DestinationShow',
     components: {
-      ExperienceCard,
-      GoBack
+      'expericence-card': ExperienceCard,
+      'go-back':GoBack
     },
     props: {
       id: {
@@ -38,33 +38,31 @@
 
 
 <template>
-<!-- Make the template for every destination according to the destination  id in the url -->
-<div>
-  <section class="destination">
-    <h1>{{destination.name}}</h1>
-    <GoBack></GoBack>
-    <div class="destination-details">
-      <img :src="`/images/${destination.image}`" :alt="destination.name">
-      <p>{{destination.description}}</p>
-    </div>
-  </section>
-  <!-- <h1 v-else>Loading...</h1> -->
+  <div>
+    <!-- Make the template for every destination according to the destination  id in the url -->
+    <section class="destination">
+      <h1>{{destination.name}}</h1>
+      <go-back></go-back>
+      <div class="destination-details">
+        <img :src="`/images/${destination.image}`" :alt="destination.name">
+        <p>{{destination.description}}</p>
+      </div>
+    </section>
 
-<!-- experiences section with another router link -->
-  <section class="experiences">
-    <h2>Top Experiences in {{destination.name}}</h2>
-    <div class="cards">
-      <router-link
-        v-for="experience in destination.experiences"
-        :key="experience.slug"
-        :to="{name: 'experience.show', params:{experienceSlug: experience.slug}}">
-        <ExperienceCard :experience="experience"></ExperienceCard>
-      </router-link>
-    </div>
-    <router-view></router-view>
-  </section>
-</div>
-
+  <!-- experiences section with another router link -->
+    <section class="experiences">
+      <h2>Top Experiences in {{destination.name}}</h2>
+      <div class="cards">
+        <router-link
+          v-for="experience in destination.experiences"
+          :key="experience.slug"
+          :to="{name: 'experience.show', params:{experienceSlug: experience.slug}}">
+          <expericence-card :experience="experience"></expericence-card>
+        </router-link>
+      </div>
+      <router-view></router-view>
+    </section>
+  </div>
 
 </template>
 
