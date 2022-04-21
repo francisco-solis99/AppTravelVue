@@ -1,10 +1,12 @@
 <script>
   import sourceData from '@/data.json';
   import ExperienceCard from '@/components/ExperienceCard.vue';
+  import GoBack from '@/components/GoBack.vue';
   export default{
     name: 'DestinationShow',
     components: {
-      'experience-card': ExperienceCard,
+      ExperienceCard,
+      GoBack
     },
     props: {
       id: {
@@ -27,10 +29,6 @@
         return sourceData.destinations.find(item => item.id === this.id);
       }
     },
-
-    updated(){
-      console.log(this.$props);
-    }
     // async created(){
     //   const response = await fetch(`https://travel-dummy-api.netlify.app/${this.$route.params.slug}`);
     //   this.destination = await response.json();
@@ -41,14 +39,16 @@
 
 <template>
 <!-- Make the template for every destination according to the destination  id in the url -->
-  <section class="destination" v-if="destination">
+<div>
+  <section class="destination">
     <h1>{{destination.name}}</h1>
+    <GoBack></GoBack>
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name">
       <p>{{destination.description}}</p>
     </div>
   </section>
-  <h1 v-else>Loading...</h1>
+  <!-- <h1 v-else>Loading...</h1> -->
 
 <!-- experiences section with another router link -->
   <section class="experiences">
@@ -58,10 +58,14 @@
         v-for="experience in destination.experiences"
         :key="experience.slug"
         :to="{name: 'experience.show', params:{experienceSlug: experience.slug}}">
-        <experience-card :experience="experience"></experience-card>
+        <ExperienceCard :experience="experience"></ExperienceCard>
       </router-link>
     </div>
+    <router-view></router-view>
   </section>
+</div>
+
+
 </template>
 
 

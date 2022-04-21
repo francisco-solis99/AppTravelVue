@@ -1,7 +1,7 @@
 <script>
   import sourceData from '@/data.json';
   export default {
-    name:'DestinationExperience',
+    // name:'DestinationExperience',
     props: {
       id: {
         type: Number,
@@ -22,11 +22,11 @@
 </script>
 
 <template>
-  <article class="experience" v-if="experience">
-    <h1>{{experience.name}}</h1>
-    <div class="experience-details">
-      <img :src="`/images/${experience.image}`" :alt="experience.name">
-      <p>{{experience.description}}</p>
-    </div>
-  </article>
+    <article class="experience">
+      <h1>{{experience.name}}</h1>
+      <div class="experience-details">
+        <img :src="`/images/${experience.image}`" :alt="experience.name">
+        <p>{{experience.description}}</p>
+      </div>
+    </article>
 </template>
