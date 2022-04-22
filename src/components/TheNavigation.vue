@@ -11,6 +11,7 @@
       :to="{name:'destination.show', params:{id:destination.id, slug:destination.slug}}">
        {{destination.name}}
       </router-link>
+      <router-link :to="{name:'protected'}">DashBoard</router-link>
 
   </nav>
 </template>
