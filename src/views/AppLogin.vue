@@ -25,7 +25,8 @@
         window.user = this.username;
         if(this.username === 'admin' && this.password === 'admin'){
           // rederict the user to a protected page
-        this.$router.push({name:'protected'});
+        const redirectPath = this.$route.query.redirect || '/protected'; // get the redirect path from the query string or to the default /protected
+        this.$router.push(redirectPath);
         return;
         }
         console.log('Invalid credentials');

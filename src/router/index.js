@@ -9,6 +9,7 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  // Dynamic paths with meta requiresauth
   // protected page
   {
     path: '/protected',
@@ -24,6 +25,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/AppLogin.vue')
+  },
+
+  // Invoices page
+  {
+    path: '/invoices',
+    name: 'invoices',
+    component: () => import('@/views/AppInvoices.vue'),
+    meta: {
+      requiresAuth: true,
+    }
   },
 
 
@@ -81,7 +92,7 @@ const router = createRouter({
 router.beforeEach((to) => {
   if(to.meta.requiresAuth && !window.user){
     // ask login if not already logged in
-    return {name:'login'};
+    return {name:'login', query:{redirect: to.fullPath}}; //redirect in case we try to acces a page that needs authorizathion
   }
 });
 export default router;

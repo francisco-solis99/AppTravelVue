@@ -1,7 +1,7 @@
 <script>
   import sourceData from '@/data.json';
   export default {
-    // name:'DestinationExperience',
+    name:'DestinationExperience',
     props: {
       id: {
         type: Number,
