@@ -7,14 +7,23 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    // adding an alias
+    alias: '/home'
   },
+  // adding a rederict with /start to Home
+  { path: '/start', redirect:{name:'Home'}},
+
   // Dynamic paths with meta requiresauth
   // protected page
   {
     path: '/protected',
     name: 'protected',
-    component: () => import('@/views/AppProtected.vue'),
+    components: {
+      default: () => import('@/views/AppProtected.vue'),
+      LeftSideBar: () => import('@/components/LeftSideBar.vue'),
+
+    },
     meta: {
       requiresAuth: true,
     }
@@ -31,7 +40,10 @@ const routes = [
   {
     path: '/invoices',
     name: 'invoices',
-    component: () => import('@/views/AppInvoices.vue'),
+    components: {
+      default: () => import('@/views/AppInvoices.vue'),
+      LeftSideBar: () => import('@/components/LeftSideBar.vue'),
+    },
     meta: {
       requiresAuth: true,
     }
